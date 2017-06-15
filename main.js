@@ -60,7 +60,7 @@
         pictureTile.appendChild(phoneNumber);
 
         var ssnBlurred = document.createElement('p');
-        ssnBlurred.setAttribute('class', 'info socalNum');
+        ssnBlurred.setAttribute('class', 'info socialNum');
         ssnBlurred.innerHTML = "123-45-6789";
         pictureTile.appendChild(ssnBlurred);
       }
