@@ -12,60 +12,57 @@
   //add style to center text
   container.appendChild(heading);
 
+  var flexCont = document.createElement('div');
+  flexCont.setAttribute('class', 'flex-container');
+  container.appendChild(flexCont);
+
+  var flexItem = document.createElement('div');
+  flexItem.setAttribute('class', 'flex');
+  flexCont.appendChild(flexItem);
+
+
   //will need to create a loop to get info 12 times
   fetch(url).then(function(response) {
     response.json().then(function(data) {
       console.log(data);
       for (var i = 0; i < data.results.length; i++) {
         console.log(data.results.length);
-        var flexCont = document.createElement('div');
-        flexCont.setAttribute('class', 'flex-container');
-        container.appendChild(flexCont);
-
-        var flexItem = document.createElement('div');
-        flexItem.setAttribute('class', 'flex');
-        container.appendChild(flexItem);
 
         var pictureTile = document.createElement('div');
         pictureTile.setAttribute('class', 'profile-pic');
         pictureTile.innerHTML = '<img src="' + data.results[i].picture.large + '">';
-        container.appendChild(pictureTile);
+        flexItem.appendChild(pictureTile);
 
-        var nameNode = document.createElement('div');
+        var nameNode = document.createElement('p');
         nameNode.setAttribute('class', 'info name');
         nameNode.innerHTML = data.results[i].name.first + " " + data.results[i].name.last;
-        container.appendChild(nameNode);
+        flexItem.appendChild(nameNode);
 
-        // var lastNameNode = document.createElement('div');
-        // lastNameNode.setAttribute('class', 'info name');
-        // lastNameNode.innerHTML = data.results[i].name.last;
-        // container.appendChild(lastNameNode);
-
-        var emailNode = document.createElement('div');
+        var emailNode = document.createElement('p');
         emailNode.setAttribute('class', 'info email');
         emailNode.innerHTML = data.results[i].email;
-        container.appendChild(emailNode);
+        flexItem.appendChild(emailNode);
 
         //div tag with two p elements
         var streetAdd = document.createElement('p');
         streetAdd.setAttribute('class', 'info address');
         streetAdd.innerHTML = data.results[i].location.city;
-        container.appendChild(streetAdd);
+        flexItem.appendChild(streetAdd);
 
         var locationAdd = document.createElement('p');
         locationAdd.setAttribute('class', 'info address');
         locationAdd.innerHTML = data.results[i].location.city + ", " + data.results[i].location.state + "  " + data.results[i].location.postcode;
-        container.appendChild(locationAdd);
+        flexItem.appendChild(locationAdd);
 
-        var phoneNumber = document.createElement('div');
+        var phoneNumber = document.createElement('p');
         phoneNumber.setAttribute('class', 'info');
         phoneNumber.innerHTML = data.results[i].phone;
-        container.appendChild(phoneNumber);
+        flexItem.appendChild(phoneNumber);
 
-        var ssnBlurred = document.createElement('div');
+        var ssnBlurred = document.createElement('p');
         ssnBlurred.setAttribute('class', 'info socalNum');
         ssnBlurred.innerHTML = "123-45-6789";
-        container.appendChild(ssnBlurred);
+        flexItem.appendChild(ssnBlurred);
       }
     })
     });
