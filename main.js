@@ -7,57 +7,112 @@
 
   var url = 'https://randomuser.me/api/?results=12'; //random user api
   var container = document.querySelector('.customers'); //could also use querySelector
-  var heading = document.createElement('h2');
-  heading.textContent = "INTERNAL COMPANY DIRECTORY";
-  //add style to center text
-  container.appendChild(heading);
+  // var heading = document.createElement('h2');
+  // heading.textContent = "INTERNAL COMPANY DIRECTORY";
+  // //add style to center text
+  // document.appendChild(heading);
 
   //will need to create a loop to get info 12 times
-  fetch(url).then(function(response) { //what  you want it to run when data is fetched
+  fetch(url).then(function(response) {
     response.json().then(function(data) {
       console.log(data);
       for (var i = 0; i < data.results.length; i++) {
-        console.log('line 20 ', data.results[i].name.first);
-        var first = data.results[i].name.first;
-        console.log(first);
-        var last = data.results[i].name.last;
-        var fullName = first + " " + last;
-        console.log(fullName);
-        var email = data.results[i].email;
-        //  console.log(companyProfile.email);
-        var street = data.results[i].location.street;
-        var city = data.results[i].location.city;
-        var state = data.results[i].location.state;
-        //  console.log(companyProfile.state);
-        var zip = data.results[i].location.postcode;
-        var phone = data.results[i].phone;
-        var ssn = "123-45-6789";
-        var picture = data.results[i].picture.large;
+        console.log(data.results.length);
+        var flexCont = document.createElement('div');
+        flexCont.setAttribute('class', 'flex-container');
+        container.appendChild(flexCont);
 
-      // addToPage();
+        var flexItem = document.createElement('div');
+        flexItem.setAttribute('class', 'flex');
+        container.appendChild(flexItem);
+
+        var pictureTile = document.createElement('div');
+        pictureTile.setAttribute('class', 'profile-pic');
+        pictureTile.innerHTML = '<img src="' + data.results[i].picture.large + '">';
+        container.appendChild(pictureTile);
+
+        var nameNode = document.createElement('div');
+        nameNode.setAttribute('class', 'info name');
+        nameNode.innerHTML = data.results[i].name.first + " " + data.results[i].name.last;
+        container.appendChild(nameNode);
+
+        // var lastNameNode = document.createElement('div');
+        // lastNameNode.setAttribute('class', 'info name');
+        // lastNameNode.innerHTML = data.results[i].name.last;
+        // container.appendChild(lastNameNode);
+
+        var emailNode = document.createElement('div');
+        emailNode.setAttribute('class', 'info email');
+        emailNode.innerHTML = data.results[i].email;
+        container.appendChild(emailNode);
+
+        //div tag with two p elements
+        var streetAdd = document.createElement('p');
+        streetAdd.setAttribute('class', 'info address');
+        streetAdd.innerHTML = data.results[i].location.city;
+        container.appendChild(streetAdd);
+
+        var locationAdd = document.createElement('p');
+        locationAdd.setAttribute('class', 'info address');
+        locationAdd.innerHTML = data.results[i].location.city + ", " + data.results[i].location.state + "  " + data.results[i].location.postcode;
+        container.appendChild(locationAdd);
+
+        var phoneNumber = document.createElement('div');
+        phoneNumber.setAttribute('class', 'info');
+        phoneNumber.innerHTML = data.results[i].phone;
+        container.appendChild(phoneNumber);
+
+        var ssnBlurred = document.createElement('div');
+        ssnBlurred.setAttribute('class', 'info socalNum');
+        ssnBlurred.innerHTML = "123-45-6789";
+        container.appendChild(ssnBlurred);
       }
     })
-  });
-
-  //
+    });
 
 
-  function addToPage(data) {
-      var tile = document.createElement('div');
-      tile.innerHTML = '<img src="' + picture + '">';
-      container.appendChild(tile);
-      // var picture = document.createElement('div');
-      // picture.textContent = fullName;
-      // container.appendChild(picture);
-      //
-      // var name = document.createElement('div');
-      // var firstName = response.results[i].name.first;
-      // var lastName = response.results[i].name.last;
-      // container.appendChild(firstName + " " + lastName);
-      // console.log(firstName + " " + lastName);
 
 
-  }
+
+
+//         console.log('line 20 ', data.results[i].name.first);
+//         var first = data.results[i].name.first;
+// // debugger;
+        // var last = data.results[i].name.last;
+        // var fullName = first + " " + last;
+        // console.log(fullName);
+        // var email = data.results[i].email;
+        //  console.log(data.results[i].email);
+        // var street = data.results[i].location.street;
+        // console.log(street);
+        // var city = data.results[i].location.city;
+        // console.log(city);
+        // var state = data.results[i].location.state;
+        // console.log(state);
+        //  console.log(data.results[i].state);
+        // var zip = data.results[i].location.postcode;
+        // var cityStateZip = city + ", " + state + " " + zip;
+        // console.log(cityStateZip);
+        // var phone = data.results[i].phone;
+        // console.log(phone);
+        // var ssn = "123-45-6789";
+        // var picture = data.results[i].picture.large;
+        // console.log("line 42: ", picture);
+      // addToPage();
+
+
+  // function addToPage() {
+  // }
+
+
+        // picture.textContent = fullName;
+        // container.appendChild(picture);
+        //
+        // var name = document.createElement('div');
+        // var firstName = response.results[i].name.first;
+        // var lastName = response.results[i].name.last;
+        // container.appendChild(firstName + " " + lastName);
+        // console.log(firstName + " " + lastName);
 
 
   //

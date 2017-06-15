@@ -1,0 +1,33 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  text-align: center;
+}
+
+.flex-container{
+  display: flex;
+  flex-flow: row wrap;
+  padding-top: 30px;
+  width: 100%;
+  margin: 0 20px;
+}
+
+.flex{
+  flex: 1 1 20%;
+  margin: 20px 5px;
+  align-items: center;
+}
+
+.info{
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  font-size: 16px;
+}
+
+.name{
+  text-transform: uppercase;
+  font-weight: bolder;
+  border-bottom: 1px solid green;
+}
