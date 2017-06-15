@@ -7,10 +7,10 @@
 
   var url = 'https://randomuser.me/api/?results=12'; //random user api
   var container = document.querySelector('.customers'); //could also use querySelector
-  // var heading = document.createElement('h2');
-  // heading.textContent = "INTERNAL COMPANY DIRECTORY";
-  // //add style to center text
-  // document.appendChild(heading);
+  var heading = document.createElement('h2');
+  heading.textContent = "INTERNAL COMPANY DIRECTORY";
+  //add style to center text
+  container.appendChild(heading);
 
   //will need to create a loop to get info 12 times
   fetch(url).then(function(response) {
