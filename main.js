@@ -16,9 +16,9 @@
   flexCont.setAttribute('class', 'flex-container');
   container.appendChild(flexCont);
 
-  var flexItem = document.createElement('div');
-  flexItem.setAttribute('class', 'flex');
-  flexCont.appendChild(flexItem);
+  // var flexItem = document.createElement('div');
+  // flexItem.setAttribute('class', 'flex');
+  // flexCont.appendChild(flexItem);
 
 
   //will need to create a loop to get info 12 times
@@ -29,40 +29,40 @@
         console.log(data.results.length);
 
         var pictureTile = document.createElement('div');
-        pictureTile.setAttribute('class', 'profile-pic');
+        pictureTile.setAttribute('class', 'profile-pic flex');
         pictureTile.innerHTML = '<img src="' + data.results[i].picture.large + '">';
-        flexItem.appendChild(pictureTile);
+        flexCont.appendChild(pictureTile);
 
         var nameNode = document.createElement('p');
         nameNode.setAttribute('class', 'info name');
         nameNode.innerHTML = data.results[i].name.first + " " + data.results[i].name.last;
-        flexItem.appendChild(nameNode);
+        pictureTile.appendChild(nameNode);
 
         var emailNode = document.createElement('p');
         emailNode.setAttribute('class', 'info email');
         emailNode.innerHTML = data.results[i].email;
-        flexItem.appendChild(emailNode);
+        pictureTile.appendChild(emailNode);
 
         //div tag with two p elements
         var streetAdd = document.createElement('p');
         streetAdd.setAttribute('class', 'info address');
         streetAdd.innerHTML = data.results[i].location.city;
-        flexItem.appendChild(streetAdd);
+        pictureTile.appendChild(streetAdd);
 
         var locationAdd = document.createElement('p');
         locationAdd.setAttribute('class', 'info address');
         locationAdd.innerHTML = data.results[i].location.city + ", " + data.results[i].location.state + "  " + data.results[i].location.postcode;
-        flexItem.appendChild(locationAdd);
+        pictureTile.appendChild(locationAdd);
 
         var phoneNumber = document.createElement('p');
         phoneNumber.setAttribute('class', 'info');
         phoneNumber.innerHTML = data.results[i].phone;
-        flexItem.appendChild(phoneNumber);
+        pictureTile.appendChild(phoneNumber);
 
         var ssnBlurred = document.createElement('p');
         ssnBlurred.setAttribute('class', 'info socalNum');
         ssnBlurred.innerHTML = "123-45-6789";
-        flexItem.appendChild(ssnBlurred);
+        pictureTile.appendChild(ssnBlurred);
       }
     })
     });
